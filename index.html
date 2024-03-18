@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather of The Day</title>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/dayjs.min.js"></script>
     <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
@@ -13,15 +14,16 @@
     <main id="mainContainer">
         <section id="search">
             <h2>Search for the City:</h2>
-            <input id="userInput" placeholder="Type a any city">
+            <input type="text" id="userInput" name="userInput" placeholder="Type any city">
             <button id="searchBtn">Search</button>
         </section>
         <section id="resultPage">
-            <h2 id="resultHeader"></h2>
-            <ul id="weatherCondition"></ul>
+            <h3><span id="date"></span></h3>
         </section>
-        <section id="forecast">
+        <section id="forecastContainer">
             <h3 id="forecastHeader">5-Day Forecast</h3>
+            <div id="forecast"></div>
+
             
 
 
