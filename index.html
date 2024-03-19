@@ -8,32 +8,34 @@
     <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
-    <header id="header">
-        <h1 id="title">Weather Of The Day</h1>
-    </header>
-    <main id="mainContainer">
-        <section id="search">
+    <div id="mainContainer">
+        <header id="header">
+            <h1 id="title">Weather Of The Day</h1>
+        </header>
+         <section id="search">
             <h2>Search for the City:</h2>
             <input type="text" id="userInput" name="userInput" placeholder="Type any city">
-            <button id="searchBtn">Search</button>
+            <button id="searchBtn">Search City</button>
+            <ul id="listOfCity"></ul>
         </section>
-        <section id="resultPage">
-            <h3><span id="date"></span></h3>
+        <section id="resultContainer">
+            <div id="resultPage">
+                <h3><span id="date"></span></h3>
+                <img id="icon" src="" alt="weatherIcon">
+            </div>
         </section>
         <section id="forecastContainer">
             <h3 id="forecastHeader">5-Day Forecast</h3>
-            <div id="forecast"></div>
-
-            
-
-
+            <div id="forecast">
+                <div id="day1"></div>
+                <div id="day2"></div>
+                <div id="day3"></div>
+                <div id="day4"></div>
+                <div id="day5"></div>
+                   
+            </div>
         </section>
-
-
-
-
-
-    </main>
+    </div>
     <script src="./assets/weather.js"></script>
 </body>
 </html>
