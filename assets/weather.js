@@ -2,13 +2,20 @@ const apiKey = '5a51afcc1b30877aabfe03da14554523';
 
 var searchBtn = document.getElementById('searchBtn')
 // const apiUrl = `https://api.openweathermap.org/data/2.5/weather?${cityName}&appid=${apiKey}`;
+var storedList = JSON.parse(localStorage.getItem('listOfCity'))
+if(!storedList){
+  storedList = [];
+}
+console.log(storedList)
 
 searchBtn.addEventListener('click', function(){
-var cityName = document.getElementById('userInput').value
+  var cityName = document.getElementById('userInput').value
 var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + apiKey + '&units=imperial';
 
 var outputElement = document.getElementById('resultPage'); 
 
+storedList.push(cityName)
+localStorage.setItem('listOfCity', JSON.stringify(storedList))
 fetch(apiUrl)
   .then(response => {
     if (!response.ok) {
@@ -19,8 +26,8 @@ fetch(apiUrl)
   .then(data => {
     console.log(data)
     const temperature = data.main.temp;
-    const icon = data.weather[0].icon;
-    // var iconUrl = "http:openweathermap.org/img/w/" + icon + ".png";
+    // const icon = data.weather[0].icon;
+    // var iconUrl = "http://openweathermap.org/img/w/" + icon + ".png"
     const location = data.name; 
     const wind = data.wind.speed;
     const humidity = data.main.humidity; 
@@ -28,13 +35,14 @@ fetch(apiUrl)
           var dateObject = dayjs.unix(days)
           var formatDate = dateObject.format('MMMM D, YYYY')
     
-
+    // var iconDisplay = document.getElementById('#icon').attr('src' , iconUrl)
+    // console.log(iconDisplay)
 
     outputElement.innerHTML = `<h3> ${location}  (${formatDate})</h3>
                                <p>Temperature: ${temperature}°F</p> 
                                <p>Wind: ${wind} MPH</p>
                                <p>Humidity: ${humidity} %</p>
-                               <img>${icon}
+                                
                                `;
                                
 
@@ -66,6 +74,7 @@ searchBtn.addEventListener('click', function(){
       var days = data.list[7].dt;
           var dateObject = dayjs.unix(days)
           var formatDate = dateObject.format('dddd')
+          var icon = data.list[7].weather[0].icon;
 
       day1 =  data.list.slice(6,13)
       console.log(day1)
@@ -106,7 +115,8 @@ searchBtn.addEventListener('click', function(){
       console.log(maxHumidity)
   
   
-      firstDay.innerHTML =  `<p> ${formatDate} </p>
+      firstDay.innerHTML =  ` <img> ${icon} 
+                              <h4> ${formatDate} </h4>
                               <p>Temperature: ${maxTemp}°F</p>
                                <p>Wind: ${maxWind} MPH</p>
                                <p>Humidity: ${maxHumidity} %</p>
@@ -157,7 +167,7 @@ searchBtn.addEventListener('click', function(){
       console.log(maxHumidity)
                         
                         
-      secondDday.innerHTML =  `<p> ${formatDate} </p>
+      secondDday.innerHTML =  `<h4> ${formatDate} </h4>
                                <p>Temperature: ${maxTemp}°F</p>
                                <p>Wind: ${maxWind} MPH</p>
                                <p>Humidity: ${maxHumidity} %</p>                     
@@ -168,10 +178,24 @@ searchBtn.addEventListener('click', function(){
     });
     console.log()
 
-    var cityList = localStorage.setItem('user', cityName)
-    var cityArray = []
-
-  
+    renderList()
   } )
+  var list = document.getElementById('listOfCity')
+  var listOfCity = [];
+
+  function renderList(){
+    list.innerHTML ="";
+  
+    for (var i=0; i<storedList.length; i++ ) {
+    var listObj = storedList[i];
+
+    var btn = document.createElement("button");
+    btn.textContent = listObj;
+    btn.setAttribute("data-index", i);
+
+    list.appendChild(btn);
+    }}
+
+renderList()
 
   
