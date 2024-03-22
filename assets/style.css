@@ -67,9 +67,9 @@ button{
     border-radius: 10px;
     padding: 10px 20px;
     background-color: rgb(214, 214, 214);
-
-
+    line-height: 30px;
 }
+
 
 #forecastContainer{
     grid-column-start: 2;
@@ -80,11 +80,13 @@ button{
     background-color: rgb(214, 214, 214);
     border-radius: 10px;
     padding: 10px 20px;
+    
 
 
 }
 #forecastHeader{
     text-align: center;
+    padding: 20px;
 }
 #forecast{
     display:grid;
@@ -100,6 +102,7 @@ button{
     background-color: var(--forecastcolor);
     border-radius: 10px;
     padding: 5px;
+    line-height: 30px;
 
 }
 #forecast #day2{
@@ -110,6 +113,7 @@ button{
     background-color: var(--forecastcolor);
     border-radius: 10px;
     padding: 5px;
+    line-height: 30px;
 
 
 }
@@ -121,6 +125,7 @@ button{
     background-color: var(--forecastcolor);
     border-radius: 10px;
     padding: 5px;
+    line-height: 30px;
 
 
 }
@@ -132,6 +137,7 @@ button{
     background-color: var(--forecastcolor);
     border-radius: 10px;
     padding: 5px;
+    line-height: 30px;
 
 
 }
@@ -143,6 +149,7 @@ button{
     background-color: var(--forecastcolor);
     border-radius: 10px;
     padding: 5px;
+    line-height: 30px;
 
 
 }
@@ -154,6 +161,11 @@ h4{
     display: inline-grid;
     gap:5px;
     margin-top: 30px;
+}
+
+#icon{
+    height: 150px;
+    width:150px;
 }
 
 
